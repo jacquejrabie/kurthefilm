@@ -97,6 +97,10 @@
   .tile{position:relative;overflow:hidden;background:#151210;aspect-ratio:3/2}
   .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s ease,filter 1.2s ease;filter:brightness(.92)}
   .tile:hover img{filter:brightness(1)}
+  @media (min-width:821px) and (orientation:landscape){
+    #stills{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:48px;padding-bottom:48px}
+    #stills .head,#stills .grid{width:100%;max-width:min(1400px,max(560px,calc((100svh - 160px) * 1.5)))}
+  }
 
   .credits{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
   .credits div p:first-child{margin-bottom:10px}
