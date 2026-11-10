@@ -139,6 +139,8 @@
   footer a{text-decoration:none}
   body.lock{overflow:hidden}
 
+  .rv{opacity:0;transform:translateY(18px);transition:opacity 1.2s ease,transform 1.2s ease}
+  .rv.in{opacity:1;transform:none}
   @media (max-width:820px){
     nav a{display:none}
     nav a.open-contact{display:inline}
@@ -163,6 +165,7 @@
     .bottom .status{font-style:italic}
   }
   @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none}
     .reel img.on{animation:none}
     .pin .halo{animation:none}
   }
@@ -218,15 +221,15 @@
     <p class="cap">WIP</p>
   </div>
   <div class="grid">
-    <figure class="tile t-robe"><img src="assets/img/robe.jpg" alt="An elderly monk in robes" loading="lazy"></figure>
-    <figure class="tile t-gravestone"><img src="assets/img/gravestone.jpg" alt="A grave marker half covered in ivy" loading="lazy"></figure>
-    <figure class="tile t-library"><img src="assets/img/library.jpg" alt="A woman seated in a library" loading="lazy"></figure>
-    <figure class="tile t-churchyard"><img src="assets/img/churchyard.jpg" alt="A churchyard above the sea at sunset" loading="lazy"></figure>
-    <figure class="tile t-priest"><img src="assets/img/priest.jpg" alt="A priest seated in the aisle of a church" loading="lazy"></figure>
-    <figure class="tile t-guillotine"><img src="assets/img/guillotine.jpg" alt="A miniature guillotine scene" loading="lazy"></figure>
-    <figure class="tile t-party"><img src="assets/img/party.jpg" alt="A crowded bar under red neon" loading="lazy"></figure>
-    <figure class="tile t-fox"><img src="assets/img/fox.jpg" alt="A fox among graves at night" loading="lazy"></figure>
-    <figure class="tile t-lab"><img src="assets/img/lab.jpg" alt="A scientist in a laboratory full of equipment racks" loading="lazy"></figure>
+    <figure class="tile rv t-robe"><img src="assets/img/robe.jpg" alt="An elderly monk in robes" loading="lazy"></figure>
+    <figure class="tile rv t-gravestone"><img src="assets/img/gravestone.jpg" alt="A grave marker half covered in ivy" loading="lazy"></figure>
+    <figure class="tile rv t-library"><img src="assets/img/library.jpg" alt="A woman seated in a library" loading="lazy"></figure>
+    <figure class="tile rv t-churchyard"><img src="assets/img/churchyard.jpg" alt="A churchyard above the sea at sunset" loading="lazy"></figure>
+    <figure class="tile rv t-priest"><img src="assets/img/priest.jpg" alt="A priest seated in the aisle of a church" loading="lazy"></figure>
+    <figure class="tile rv t-guillotine"><img src="assets/img/guillotine.jpg" alt="A miniature guillotine scene" loading="lazy"></figure>
+    <figure class="tile rv t-party"><img src="assets/img/party.jpg" alt="A crowded bar under red neon" loading="lazy"></figure>
+    <figure class="tile rv t-fox"><img src="assets/img/fox.jpg" alt="A fox among graves at night" loading="lazy"></figure>
+    <figure class="tile rv t-lab"><img src="assets/img/lab.jpg" alt="A scientist in a laboratory full of equipment racks" loading="lazy"></figure>
   </div>
 </section>
 
@@ -304,6 +307,8 @@
     location.href='mailto:bookmotelzero@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     note.textContent='Opening your email app';
   });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
