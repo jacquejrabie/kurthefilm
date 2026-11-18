@@ -109,6 +109,18 @@
   .contact .cap{margin-bottom:20px}
   .contact .big{font-family:var(--sans);font-size:clamp(24px,3.6vw,48px);letter-spacing:-.015em;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .4s}
   .contact .big:hover{border-color:var(--ink)}
+  .nl{max-width:440px;margin:0 auto 64px}
+  .nl .nl-k{color:var(--ink);opacity:.75;margin-bottom:14px}
+  .nl-row{display:flex;align-items:center;border-bottom:1px solid var(--line);transition:border-color .2s}
+  .nl-row:focus-within{border-color:var(--ink)}
+  .nl input{flex:1;min-width:0;font-family:var(--sans);font-size:17px;color:var(--ink);background:transparent;border:0;padding:10px 0;outline:none;border-radius:0}
+  .nl input::placeholder{color:var(--dim)}
+  .nl .nl-row button{margin:0;background:none;border:0;color:var(--ink);cursor:pointer;padding:10px 0 10px 16px;font-weight:500}
+  .nl .nl-row button:hover{opacity:.7}
+  .nl .nl-msg{min-height:1.4em;margin:12px 0 0 !important;color:var(--dim);letter-spacing:.12em}
+  .nl.done .nl-row{display:none}
+  .nl.done .nl-msg{color:var(--ink)}
+  .nl-o{margin:0 0 44px;max-width:420px}
   footer{padding:24px var(--pad) 28px;display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line)}
 
 
@@ -247,9 +259,15 @@
 <hr class="rule">
 
 <section class="contact">
+  <form class="nl nl-c" novalidate>
+    <p class="cap nl-k">Let me know when the film is ready!</p>
+    <div class="nl-row"><input type="email" name="email" placeholder="Your email" autocomplete="email" aria-label="Your email" required><button type="submit" class="cap">Join</button></div>
+    <p class="cap nl-msg" aria-live="polite"></p>
+  </form>
   <p class="cap">Welcoming Press, Partnership, and Participation inquiries:</p>
   <a class="big" href="mailto:bookmotelzero@gmail.com">bookmotelzero@gmail.com</a>
 </section>
+<iframe name="nl-sink" title="" hidden></iframe>
 
 <footer>
   <p class="cap">© 2026 Motel Zero</p>
@@ -262,6 +280,11 @@
   <div class="ct-in">
     <div class="ct-l">
       <p class="ct-k">KUR</p>
+      <form class="nl nl-o" novalidate>
+        <p class="cap nl-k">Let me know when the film is ready!</p>
+        <div class="nl-row"><input type="email" name="email" placeholder="Your email" autocomplete="email" aria-label="Your email" required><button type="submit" class="cap">Join</button></div>
+        <p class="cap nl-msg" aria-live="polite"></p>
+      </form>
       <p class="cap">Welcoming Press, Partnership, and Participation inquiries:</p>
       <a class="ct-mail" href="mailto:bookmotelzero@gmail.com">bookmotelzero@gmail.com</a>
     </div>
@@ -309,6 +332,18 @@
   });
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  const NL_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSc5uu_u1I1LZptCsUkXDZRJR3Ken7yZS4DI55u1aep07cC4wg/formResponse', NL_FIELD='entry.1052403756';
+  document.querySelectorAll('form.nl').forEach(fm=>fm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const inp=fm.querySelector('input'), msg=fm.querySelector('.nl-msg'), v=inp.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){msg.textContent='Please check your email';return;}
+    if(NL_ACTION){
+      const f=document.createElement('form'); f.method='POST'; f.action=NL_ACTION; f.target='nl-sink'; f.hidden=true;
+      const i=document.createElement('input'); i.name=NL_FIELD; i.value=v; f.appendChild(i);
+      document.body.appendChild(f); f.submit(); f.remove();
+    }
+    fm.classList.add('done'); msg.textContent="We'll let you know";
+  }));
 </script>
 </body>
 </html>
