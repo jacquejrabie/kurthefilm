@@ -110,7 +110,7 @@
   .contact .big{font-family:var(--sans);font-size:clamp(24px,3.6vw,48px);letter-spacing:-.015em;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .4s}
   .contact .big:hover{border-color:var(--ink)}
   .nl{max-width:440px;margin:0 auto 64px}
-  .nl .nl-k{color:var(--ink);opacity:.75;margin-bottom:14px}
+  .nl .nl-k{color:#ff7a1f;margin-bottom:14px}
   .nl-row{display:flex;align-items:center;border-bottom:1px solid var(--line);transition:border-color .2s}
   .nl-row:focus-within{border-color:var(--ink)}
   .nl input{flex:1;min-width:0;font-family:var(--sans);font-size:17px;color:var(--ink);background:transparent;border:0;padding:10px 0;outline:none;border-radius:0}
@@ -121,6 +121,9 @@
   .nl.done .nl-row{display:none}
   .nl.done .nl-msg{color:var(--ink)}
   .nl-o{margin:0 0 44px;max-width:420px}
+  .nl .nl-msg:empty{display:none}
+  .nl-c{margin:0 auto 32px;max-width:560px}
+  .nl-c::after{content:"";display:block;width:48px;height:1px;background:#3d3631;margin:36px auto 0}
   footer{padding:24px var(--pad) 28px;display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line)}
 
 
