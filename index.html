@@ -126,6 +126,7 @@
   .nl .nl-msg:empty{display:none}
   .nl-c{margin:0 auto 32px;max-width:560px}
   .nl-c::after{content:"";display:block;width:180px;height:1px;background:#3d3631;margin:36px auto 0}
+  .signup-m{display:none}
   footer{padding:24px var(--pad) 28px;display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line)}
 
 
@@ -179,6 +180,9 @@
     .ct-t{flex-wrap:nowrap;gap:6px}
     .ct-t span{font-size:12px;padding:7px 11px;white-space:nowrap}
     .contact{text-align:left}
+    .signup-m{display:block;padding-bottom:0}
+    .signup-m .nl-c{margin:0}
+    .contact .nl-c{display:none}
     .nl-c{max-width:none;margin:0 0 40px}
     .nl-c::after{display:none}
     .contact .cap{margin-bottom:12px;line-height:1.7}
@@ -264,6 +268,14 @@
 </section>
 
 <hr class="rule">
+
+<section class="signup-m">
+  <form class="nl nl-c" novalidate>
+    <p class="cap nl-k">Let me know when the film is ready!</p>
+    <div class="nl-row"><input type="email" name="email" placeholder="Your email" autocomplete="email" aria-label="Your email" required><button type="submit" class="cap">Join</button></div>
+    <p class="cap nl-msg" aria-live="polite"></p>
+  </form>
+</section>
 
 <section>
   <div class="credits">
