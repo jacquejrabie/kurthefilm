@@ -161,7 +161,7 @@
   @media (max-width:820px){
     nav a{display:none}
     nav a.open-contact{display:inline}
-    .ct-in{grid-template-columns:1fr;align-items:start}
+    .ct-in{grid-template-columns:minmax(0,1fr);align-items:start}
     .ct-k{margin-bottom:24px}
     .txt{grid-template-columns:1fr}
     .grid{grid-template-columns:1fr 1fr;gap:8px}
@@ -175,14 +175,26 @@
     .t-fox{order:8}
     .t-robe{order:9}
     .t-robe{grid-column:span 2}
-    .credits{grid-template-columns:1fr 1fr}
-    footer{flex-direction:column}
+    .credits{grid-template-columns:1fr 1fr;gap:28px 20px}
+    .ct-t{flex-wrap:nowrap;gap:6px}
+    .ct-t span{font-size:12px;padding:7px 11px;white-space:nowrap}
+    .contact{text-align:left}
+    .nl-c{max-width:none;margin:0 0 40px}
+    .nl-c::after{display:none}
+    .contact .cap{margin-bottom:12px;line-height:1.7}
+    .contact .big{display:inline-block;font-size:clamp(19px,6.1vw,24px)}
+    footer{align-items:center;gap:8px;margin:0 var(--pad);padding:18px 0 22px}
+    footer .cap{font-size:10px;letter-spacing:.16em}
     .key{grid-template-columns:1fr;gap:22px}
     .bottom{flex-direction:column;align-items:flex-start;gap:10px}
     .bottom .status{font-style:italic}
   }
+  @media (max-width:380px){
+    .ct-t{gap:5px}
+    .ct-t span{font-size:11px;padding:6px 8px}
+    footer .cap{letter-spacing:.1em}
+  }
   @media (prefers-reduced-motion:reduce){
-    .nl .nl-k{animation:none}
     .rv{opacity:1;transform:none}
     .reel img.on{animation:none}
     .pin .halo{animation:none}
